@@ -1,4 +1,3 @@
-# _publications/liberal-refugee-policies-violence.md
 ---
 title: "Liberal Refugee Policies and Political Violence"
 authors: "Christopher W. Blair; Zhejun Qiu; Burcu Savun"
