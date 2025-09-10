@@ -5,6 +5,7 @@ permalink: /research/
 author_profile: true
 ---
 
+{% include publication-list.html %}
 {% include base_path %}
 
 <!-- hide the built-in page title and style the divider + abstract toggle -->
