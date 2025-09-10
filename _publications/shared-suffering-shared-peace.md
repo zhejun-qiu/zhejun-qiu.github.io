@@ -1,4 +1,3 @@
-# _publications/shared-suffering-shared-peace.md
 ---
 title: "Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence"
 authors: "Zhejun Qiu"
