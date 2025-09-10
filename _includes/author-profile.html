@@ -15,12 +15,10 @@
   </div>
 
   <div class="author__content">
-   <h3 class="author__name">
-  {{ author.name }}
-  <span style="font-size: 0.7em; color: #777; font-style: italic;">
-    (Pronunciation: Juh-june Chyoh)
-  </span>
-    </h3>
+   <<h3 class="author__name">{{ author.name }}</h3>
+  <div class="author__pronounce" style="font-size:0.8em;color:#777;font-style:italic;">
+  (Pronunciation: Juh-june Ch-ee-oh)
+</div>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
