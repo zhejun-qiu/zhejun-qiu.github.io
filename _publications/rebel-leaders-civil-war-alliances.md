@@ -1,4 +1,3 @@
-# _publications/rebel-leaders-civil-war-alliances.md
 ---
 title: "Rebel Leaders and Civil War Alliances"
 authors: "Zhejun Qiu; Chong Chen; Ruolin Su; Weiwen Ying"
