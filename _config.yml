@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "zhejunqiu [AT] pitt.edu"
+title                    : "zhejunqiu [at] pitt.edu"
 title_separator          : "-"
 name                     : &name "Zhejun Qiu"
 description              : &description "Welcome to my website! I am a Ph.D. candidate in Political Science at the University of Pittsburgh. My research focuses on the nexus between political violence and forced displacement. Please contact me via [zhejunqiu@pitt.edu](mailto:zhejunqiu@pitt.edu)."   # Update this with a general description of your site, this is the default if not overridden by a page
