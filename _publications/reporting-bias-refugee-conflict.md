@@ -1,4 +1,3 @@
-# _publications/reporting-bias-refugee-conflict.md
 ---
 title: "Do Refugees Fuel Conflict, or Just Make It Visible?"
 authors: "Christopher W. Blair; Zhejun Qiu; Burcu Savun"
