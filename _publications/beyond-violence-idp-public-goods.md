@@ -1,4 +1,3 @@
-# _publications/beyond-violence-idp-public-goods.md
 ---
 title: "Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War"
 authors: "Zhejun Qiu"
