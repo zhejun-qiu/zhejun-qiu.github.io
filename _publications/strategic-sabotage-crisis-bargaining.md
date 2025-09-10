@@ -1,4 +1,3 @@
-# _publications/strategic-sabotage-crisis-bargaining.md
 ---
 title: "Strategic Sabotage and Crisis Bargaining"
 authors: "Zhejun Qiu; William Spaniel; Christopher Hickey"
