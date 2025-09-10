@@ -1,4 +1,3 @@
-# _publications/refugee-policies-foreign-aid-violence.md
 ---
 title: "Refugee Policies, Foreign Aid, and Political Violence in the Global South"
 authors: "Zhejun Qiu"
