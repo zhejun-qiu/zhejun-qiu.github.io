@@ -1,7 +1,7 @@
 ---
 title: "Rebel Leaders and Civil War Alliances"
-authors: "Zhejun Qiu; Chong Chen; Ruolin Su; Weiwen Ying"
-venue: "Working paper"
+coauthors: "Chong Chen, Ruolin Su and Weiwen Ying"
+status: "Working in Progress"
 date: 2025-01-08
 collection: publications
 permalink: /research/rebel-leaders-civil-war-alliances/
