@@ -13,20 +13,38 @@ author_profile: true
 {% for s in statuses %}
   {% assign in_status = site.publications | where: "status", s %}
 
+  {%- comment -%} --- SINGLE-AUTHORED FIRST --- {%- endcomment -%}
   {% for post in in_status %}
+    {%- comment -%} Build coauthor line robustly (array or string) {%- endcomment -%}
     {% assign withline = post.coauthors %}
     {% if (withline == nil or withline == '') and post.authors %}
-      {% assign authors_norm = post.authors
-        | replace: ' and ', ';'
-        | replace: ',', ';'
-        | replace: '，', ';'
-        | replace: '  ', ' ' %}
-      {% assign withline = authors_norm
-        | replace: me, ''
-        | replace: ';;', ';'
-        | strip
-        | replace_first: '; ', ''
-        | replace: '; ;', ';' %}
+      {% if post.authors.first %}
+        {# authors is an array #}
+        {% assign co_list = '' %}
+        {% for a in post.authors %}
+          {% unless a == me or a contains "Zhejun" or a contains "Qiu" %}
+            {% if co_list == '' %}
+              {% assign co_list = a %}
+            {% else %}
+              {% assign co_list = co_list | append: '; ' | append: a %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+        {% assign withline = co_list %}
+      {% else %}
+        {# authors is a string #}
+        {% assign authors_norm = post.authors
+          | replace: ' and ', ';'
+          | replace: '&', ';'
+          | replace: ',', ';'
+          | replace: '，', ';'
+          | replace: '  ', ' ' %}
+        {% assign withline = authors_norm
+          | replace: me, ''
+          | replace: ';;', ';'
+          | strip %}
+        {% if withline %}{% assign withline = withline | replace_first: '; ', '' %}{% endif %}
+      {% endif %}
     {% endif %}
     {% assign is_single = (withline == nil or withline == '') %}
 
@@ -39,20 +57,38 @@ author_profile: true
     {% endif %}
   {% endfor %}
 
+  {%- comment -%} --- THEN COAUTHORED --- {%- endcomment -%}
   {% for post in in_status %}
+    {%- comment -%} Build coauthor line robustly (array or string) {%- endcomment -%}
     {% assign withline = post.coauthors %}
     {% if (withline == nil or withline == '') and post.authors %}
-      {% assign authors_norm = post.authors
-        | replace: ' and ', ';'
-        | replace: ',', ';'
-        | replace: '，', ';'
-        | replace: '  ', ' ' %}
-      {% assign withline = authors_norm
-        | replace: me, ''
-        | replace: ';;', ';'
-        | strip
-        | replace_first: '; ', ''
-        | replace: '; ;', ';' %}
+      {% if post.authors.first %}
+        {# authors is an array #}
+        {% assign co_list = '' %}
+        {% for a in post.authors %}
+          {% unless a == me or a contains "Zhejun" or a contains "Qiu" %}
+            {% if co_list == '' %}
+              {% assign co_list = a %}
+            {% else %}
+              {% assign co_list = co_list | append: '; ' | append: a %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+        {% assign withline = co_list %}
+      {% else %}
+        {# authors is a string #}
+        {% assign authors_norm = post.authors
+          | replace: ' and ', ';'
+          | replace: '&', ';'
+          | replace: ',', ';'
+          | replace: '，', ';'
+          | replace: '  ', ' ' %}
+        {% assign withline = authors_norm
+          | replace: me, ''
+          | replace: ';;', ';'
+          | strip %}
+        {% if withline %}{% assign withline = withline | replace_first: '; ', '' %}{% endif %}
+      {% endif %}
     {% endif %}
     {% assign is_single = (withline == nil or withline == '') %}
 
