@@ -23,7 +23,7 @@ repository               : "zhejunq/zhejunq.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "/images/zjq.jpeg"
   name             : "Zhejun Qiu"
   pronouns         : "he/his"  
   bio              : "PhD Candidate, University of Pittsburgh"
