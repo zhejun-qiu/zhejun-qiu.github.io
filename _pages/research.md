@@ -12,7 +12,7 @@ author_profile: true
 {%- for s in statuses -%}
   {%- assign in_status = site.publications | where: "status", s -%}
 
-  {# --- SINGLE-AUTHORED FIRST (no coauthors field) --- #}
+ 
   {%- for post in in_status -%}
     {%- assign co = post.coauthors | to_s | strip -%}
     {%- if co == '' -%}
@@ -39,7 +39,7 @@ author_profile: true
     {%- endif -%}
   {%- endfor -%}
 
-  {# --- THEN COAUTHORED (has coauthors field) --- #}
+  
   {%- for post in in_status -%}
     {%- assign co = post.coauthors | to_s | strip -%}
     {%- unless co == '' -%}
