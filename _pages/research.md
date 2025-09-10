@@ -37,6 +37,13 @@ author_profile: true
   {%- if co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+
+  {%- if post.title == "Refugee Policies, Foreign Aid, and Political Violence in the Global South" -%}
+    <p style="margin:.2rem 0 0; font-style:italic; font-size:.9em; color:#777;">
+      2026 Dina Zinnes Best Graduate Student Paper Award, SSIP, ISA
+    </p>
+  {%- endif -%}
+  
   {%- if post.status -%}
     {%- assign status_txt = post.status -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
