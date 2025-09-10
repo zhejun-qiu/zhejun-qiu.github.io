@@ -1,4 +1,3 @@
-# _publications/fallacybuster-misinformation-vaccine.md
 ---
 title: "FallacyBuster: A Vaccine to Combat Misinformation"
 authors: "Yuyang Pu; Muyao Hang; Zhejun Qiu"
