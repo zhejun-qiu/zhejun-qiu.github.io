@@ -24,7 +24,7 @@ author_profile: true
   .archive__item-excerpt { margin:.4rem 0 0; font-size:.9em; }
 </style>
 
-{%- assign rr = site.publications | where: "status", "Conditionally Accepted at International Studies Quarterly" -%}
+{%- assign rr = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" -%}
 {%- assign submitted = site.publications | where: "status", "Submitted" -%}
 {%- assign under_review = rr | concat: submitted | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
