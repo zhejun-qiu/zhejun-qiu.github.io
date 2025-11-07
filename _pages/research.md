@@ -18,7 +18,6 @@ author_profile: true
   details.abstract > summary{
     cursor:pointer; user-select:none; font-weight:600; outline:none;
   }
-  /* optional: subtle caret style (supported in modern browsers) */
   details.abstract > summary::marker { content:"▸ "; }
   details.abstract[open] > summary::marker { content:"▾ "; }
   .archive__item-excerpt { margin:.4rem 0 0; font-size:.9em; }
@@ -28,18 +27,6 @@ author_profile: true
 {%- assign submitted = site.publications | where: "status", "Submitted" -%}
 {%- assign under_review = rr | concat: submitted | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
-
-{%- comment -%}
-  Pull out dissertation chapters from working papers
-{%- endcomment -%}
-{%- assign diss_shared = working | where: "title", "Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence" -%}
-{%- assign diss_beyond = working | where: "title", "Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War" -%}
-{%- assign dissertation = diss_shared | concat: diss_beyond -%}
-
-{%- comment -%}
-  Remaining working papers (exclude dissertation chapters)
-{%- endcomment -%}
-{%- assign working_rest = working | where_exp: "post", "post.title != 'Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence' and post.title != 'Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War'" -%}
 
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">Under Review</h1>
 
@@ -99,12 +86,37 @@ author_profile: true
 
 <hr class="section-split" />
 
+{%- comment -%} === New Dissertation Section === {%- endcomment -%}
+
+{%- assign dissertation = site.publications | where_exp: "p", "p.title == 'Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence' or p.title == 'Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War'" -%}
+
 <h1 style="margin:0 0 .5rem; font-size:1.8rem;">Dissertation Chapters</h1>
 
-{%- comment -%} Dissertation — single-authored first (no per-item status line) {%- endcomment -%}
 {%- for post in dissertation -%}
   {%- assign co = post.coauthors | to_s | strip -%}
-  {%- if co == '' -%}
+  <article class="archive__item" style="margin:0 0 1rem 0;">
+    <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+    {%- if co != '' -%}
+      <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+    {%- endif -%}
+    {%- if post.abstract -%}
+      <details class="abstract">
+        <summary>Abstract</summary>
+        <div class="archive__item-excerpt">{{ post.abstract }}</div>
+      </details>
+    {%- endif -%}
+  </article>
+{%- endfor -%}
+
+<hr class="section-split" />
+
+<h1 style="margin:0 0 .5rem; font-size:1.8rem;">Working Papers</h1>
+
+{%- comment -%} Working Papers — single-authored first {%- endcomment -%}
+{%- for post in working -%}
+  {%- if post.title != 'Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence' and post.title != 'Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War' -%}
+    {%- assign co = post.coauthors | to_s | strip -%}
+    {%- if co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
   {%- if post.abstract -%}
@@ -114,13 +126,15 @@ author_profile: true
     </details>
   {%- endif -%}
 </article>
+    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} Dissertation — then coauthored (future-proof) {%- endcomment -%}
-{%- for post in dissertation -%}
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- unless co == '' -%}
+{%- comment -%} Working Papers — then coauthored {%- endcomment -%}
+{%- for post in working -%}
+  {%- if post.title != 'Shared Suffering, Shared Peace? Refugee Return, Violent Displacement, and Communal Violence' and post.title != 'Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War' -%}
+    {%- assign co = post.coauthors | to_s | strip -%}
+    {%- unless co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
   <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
@@ -131,31 +145,6 @@ author_profile: true
     </details>
   {%- endif -%}
 </article>
-  {%- endunless -%}
-{%- endfor -%}
-
-<hr class="section-split" />
-
-<h1 style="margin:0 0 .5rem; font-size:1.8rem;">Working Papers</h1>
-
-{%- comment -%} Working Papers — single-authored first (no per-item status line) {%- endcomment -%}
-{%- for post in working_rest -%}
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- if co == '' -%}
-<article class="archive__item" style="margin:0 0 1rem 0;">
-  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
-  {%- if post.abstract -%}
-    <details class="abstract">
-      <summary>Abstract</summary>
-      <div class="archive__item-excerpt">{{ post.abstract }}</div>
-    </details>
-  {%- endif -%}
-</article>
+    {%- endunless -%}
   {%- endif -%}
 {%- endfor -%}
-
-{%- comment -%} Working Papers — then coauthored (no per-item status line) {%- endcomment -%}
-{%- for post in working_rest -%}
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- unless co == '' -%}
-<article cla
