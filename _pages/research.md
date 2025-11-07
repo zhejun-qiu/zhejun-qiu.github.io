@@ -29,6 +29,18 @@ author_profile: true
 {%- assign under_review = rr | concat: submitted | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
 
+{%- comment -%}
+  Pull out dissertation chapters from working papers
+{%- endcomment -%}
+{%- assign diss_shared = working | where: "title", "Shared Suffering, Shared Peace? Refugee Return, Shared Trauma, and Communal Violence" -%}
+{%- assign diss_beyond = working | where: "title", "Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War" -%}
+{%- assign dissertation = diss_shared | concat: diss_beyond -%}
+
+{%- comment -%}
+  Remaining working papers (exclude dissertation chapters)
+{%- endcomment -%}
+{%- assign working_rest = working | where_exp: "post", "post.title != 'Shared Suffering, Shared Peace? Refugee Return, Shared Trauma, and Communal Violence' and post.title != 'Beyond Violence: Manipulating Internal Displacement Through Selective Public Goods Provision During Civil War'" -%}
+
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">Under Review</h1>
 
 {%- comment -%} Under Review — single-authored first {%- endcomment -%}
@@ -87,10 +99,47 @@ author_profile: true
 
 <hr class="section-split" />
 
+<h1 style="margin:0 0 .5rem; font-size:1.8rem;">Dissertation Chapters</h1>
+
+{%- comment -%} Dissertation — single-authored first (no per-item status line) {%- endcomment -%}
+{%- for post in dissertation -%}
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- if co == '' -%}
+<article class="archive__item" style="margin:0 0 1rem 0;">
+  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+  {%- if post.abstract -%}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="archive__item-excerpt">{{ post.abstract }}</div>
+    </details>
+  {%- endif -%}
+</article>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Dissertation — then coauthored (future-proof) {%- endcomment -%}
+{%- for post in dissertation -%}
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- unless co == '' -%}
+<article class="archive__item" style="margin:0 0 1rem 0;">
+  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+  <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+  {%- if post.abstract -%}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="archive__item-excerpt">{{ post.abstract }}</div>
+    </details>
+  {%- endif -%}
+</article>
+  {%- endunless -%}
+{%- endfor -%}
+
+<hr class="section-split" />
+
 <h1 style="margin:0 0 .5rem; font-size:1.8rem;">Working Papers</h1>
 
 {%- comment -%} Working Papers — single-authored first (no per-item status line) {%- endcomment -%}
-{%- for post in working -%}
+{%- for post in working_rest -%}
   {%- assign co = post.coauthors | to_s | strip -%}
   {%- if co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
@@ -106,7 +155,7 @@ author_profile: true
 {%- endfor -%}
 
 {%- comment -%} Working Papers — then coauthored (no per-item status line) {%- endcomment -%}
-{%- for post in working -%}
+{%- for post in working_rest -%}
   {%- assign co = post.coauthors | to_s | strip -%}
   {%- unless co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
