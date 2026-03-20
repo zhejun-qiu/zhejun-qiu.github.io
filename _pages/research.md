@@ -27,7 +27,7 @@ author_profile: true
 {%- assign rr_isq = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" -%}
 {%- assign rr_pp = site.publications | where: "status", "R & R at Political Psychology" -%}
 {%- assign submitted = site.publications | where: "status", "Submitted" -%}
-{%- assign under_review = rr_pp | concat: rr_isq | concat: submitted | sort: "date" | reverse -%}
+{%- assign under_review = rr_isq | concat: rr_pp | concat: submitted | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
 
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">Under Review</h1>
