@@ -24,9 +24,10 @@ author_profile: true
   .archive__item-excerpt { margin:.4rem 0 0; font-size:.9em; }
 </style>
 
-{%- assign rr = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" -%}
+{%- assign rr_isq = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" -%}
+{%- assign rr_pp = site.publications | where: "status", "R & R at Political Psychology" -%}
 {%- assign submitted = site.publications | where: "status", "Submitted" -%}
-{%- assign under_review = rr | concat: submitted | sort: "date" | reverse -%}
+{%- assign under_review = rr_isq | concat: rr_pp | concat: submitted | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
 
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">Under Review</h1>
@@ -48,6 +49,9 @@ author_profile: true
     {%- assign status_txt = post.status -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
       {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
+    {%- endif -%}
+    {%- if status_txt contains "Political Psychology" -%}
+      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
     {%- endif -%}
     <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
   {%- endif -%}
@@ -72,6 +76,9 @@ author_profile: true
     {%- assign status_txt = post.status -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
       {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
+    {%- endif -%}
+    {%- if status_txt contains "Political Psychology" -%}
+      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
     {%- endif -%}
     <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
   {%- endif -%}
