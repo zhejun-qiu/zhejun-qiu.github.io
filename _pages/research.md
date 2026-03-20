@@ -48,14 +48,16 @@ author_profile: true
   {%- endif -%}
 
   {%- if post.status -%}
-    {%- assign status_txt = post.status -%}
+    {%- assign status_txt = post.status | replace: "Submitted", "" | strip -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
       {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
     {%- endif -%}
     {%- if status_txt contains "Political Psychology" -%}
       {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
     {%- endif -%}
-    <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- if status_txt != "" -%}
+      <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- endif -%}
   {%- endif -%}
 
   {%- if post.abstract -%}
@@ -84,14 +86,16 @@ author_profile: true
   {%- endif -%}
 
   {%- if post.status -%}
-    {%- assign status_txt = post.status -%}
+    {%- assign status_txt = post.status | replace: "Submitted", "" | strip -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
       {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
     {%- endif -%}
     {%- if status_txt contains "Political Psychology" -%}
       {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
     {%- endif -%}
-    <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- if status_txt != "" -%}
+      <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- endif -%}
   {%- endif -%}
 
   {%- if post.abstract -%}
@@ -117,7 +121,16 @@ author_profile: true
   {%- endif -%}
 
   {%- if post.status -%}
-    <p style="margin:.25rem 0 0;">{{ post.status }}</p>
+    {%- assign status_txt = post.status | replace: "Submitted", "" | strip -%}
+    {%- if status_txt contains "International Studies Quarterly" -%}
+      {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
+    {%- endif -%}
+    {%- if status_txt contains "Political Psychology" -%}
+      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
+    {%- endif -%}
+    {%- if status_txt != "" -%}
+      <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- endif -%}
   {%- endif -%}
 
   {%- if post.abstract -%}
@@ -145,7 +158,16 @@ author_profile: true
   {%- endif -%}
 
   {%- if post.status -%}
-    <p style="margin:.25rem 0 0;">{{ post.status }}</p>
+    {%- assign status_txt = post.status | replace: "Submitted", "" | strip -%}
+    {%- if status_txt contains "International Studies Quarterly" -%}
+      {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
+    {%- endif -%}
+    {%- if status_txt contains "Political Psychology" -%}
+      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
+    {%- endif -%}
+    {%- if status_txt != "" -%}
+      <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    {%- endif -%}
   {%- endif -%}
 
   {%- if post.abstract -%}
