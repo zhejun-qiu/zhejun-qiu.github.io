@@ -24,27 +24,28 @@ author_profile: true
   .archive__item-excerpt { margin:.4rem 0 0; font-size:.9em; }
 </style>
 
-{%- assign rr_isq = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" -%}
-{%- assign rr_pp = site.publications | where: "status", "R & R at Political Psychology" -%}
-{%- assign submitted = site.publications | where: "status", "Submitted" -%}
-{%- assign under_review = rr_isq | concat: rr_pp | concat: submitted | sort: "date" | reverse -%}
+{%- assign cond_accepted = site.publications | where: "status", "Conditionally accepted at International Studies Quarterly" | sort: "date" | reverse -%}
+{%- assign rr_pp = site.publications | where: "status", "R & R at Political Psychology" | sort: "date" | reverse -%}
+{%- assign submitted = site.publications | where: "status", "Submitted" | sort: "date" | reverse -%}
 {%- assign working = site.publications | where: "status", "Working Paper" | sort: "date" | reverse -%}
 
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">Under Review</h1>
 
-{%- comment -%} Under Review — single-authored first {%- endcomment -%}
-{%- for post in under_review -%}
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- if co == '' -%}
+{%- comment -%} 1. Conditionally accepted {%- endcomment -%}
+{%- for post in cond_accepted -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- unless co == '' -%}
+    <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+  {%- endunless -%}
 
   {%- if post.title == "Refugee Policies, Foreign Aid, and Political Violence in the Global South" -%}
     <p style="margin:.2rem 0 0; font-style:italic; font-size:.9em; color:#777;">
       2026 Dina Zinnes Best Graduate Student Paper Award, SSIP, ISA
     </p>
   {%- endif -%}
-  
+
   {%- if post.status -%}
     {%- assign status_txt = post.status -%}
     {%- if status_txt contains "International Studies Quarterly" -%}
@@ -55,6 +56,56 @@ author_profile: true
     {%- endif -%}
     <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
   {%- endif -%}
+
+  {%- if post.abstract -%}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="archive__item-excerpt">{{ post.abstract }}</div>
+    </details>
+  {%- endif -%}
+</article>
+{%- endfor -%}
+
+{%- comment -%} 2. R&R {%- endcomment -%}
+{%- for post in rr_pp -%}
+<article class="archive__item" style="margin:0 0 1rem 0;">
+  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- unless co == '' -%}
+    <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+  {%- endunless -%}
+
+  {%- if post.status -%}
+    {%- assign status_txt = post.status -%}
+    {%- if status_txt contains "International Studies Quarterly" -%}
+      {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
+    {%- endif -%}
+    {%- if status_txt contains "Political Psychology" -%}
+      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
+    {%- endif -%}
+    <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+  {%- endif -%}
+
+  {%- if post.abstract -%}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="archive__item-excerpt">{{ post.abstract }}</div>
+    </details>
+  {%- endif -%}
+</article>
+{%- endfor -%}
+
+{%- comment -%} 3. Submitted — single-authored first {%- endcomment -%}
+{%- for post in submitted -%}
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- if co == '' -%}
+<article class="archive__item" style="margin:0 0 1rem 0;">
+  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+
+  {%- if post.status -%}
+    <p style="margin:.25rem 0 0;">{{ post.status }}</p>
+  {%- endif -%}
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -65,23 +116,18 @@ author_profile: true
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} Under Review — then coauthored {%- endcomment -%}
-{%- for post in under_review -%}
+{%- comment -%} 4. Submitted — coauthored second {%- endcomment -%}
+{%- for post in submitted -%}
   {%- assign co = post.coauthors | to_s | strip -%}
   {%- unless co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
   <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+
   {%- if post.status -%}
-    {%- assign status_txt = post.status -%}
-    {%- if status_txt contains "International Studies Quarterly" -%}
-      {%- assign status_txt = status_txt | replace: "International Studies Quarterly", "<em>International Studies Quarterly</em>" -%}
-    {%- endif -%}
-    {%- if status_txt contains "Political Psychology" -%}
-      {%- assign status_txt = status_txt | replace: "Political Psychology", "<em>Political Psychology</em>" -%}
-    {%- endif -%}
-    <p style="margin:.25rem 0 0;">{{ status_txt }}</p>
+    <p style="margin:.25rem 0 0;">{{ post.status }}</p>
   {%- endif -%}
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
