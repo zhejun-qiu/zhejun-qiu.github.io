@@ -21,15 +21,6 @@ author_profile: true
   details.abstract > summary::marker { content:"▸ "; }
   details.abstract[open] > summary::marker { content:"▾ "; }
   .archive__item-excerpt { margin:.4rem 0 0; font-size:.9em; }
-
-  .status-highlight{
-    display:inline-block;
-    padding:.12rem .45rem;
-    border-radius:.35rem;
-    background:#fff3cd;
-    color:#7a5200;
-    font-weight:700;
-  }
 </style>
 
 {%- assign peer_reviewed = site.publications | where: "status", "Accepted at International Studies Quarterly" | sort: "date" | reverse -%}
@@ -49,7 +40,7 @@ author_profile: true
   {%- endunless -%}
 
   <p style="margin:.25rem 0 0;">
-    <span class="status-highlight">Accepted</span> at <em>International Studies Quarterly</em>
+    <strong>Accepted</strong> at <em>International Studies Quarterly</em>
   </p>
 
   {%- if post.abstract -%}
@@ -191,6 +182,7 @@ author_profile: true
   {%- if co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -208,6 +200,7 @@ author_profile: true
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
   <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -229,6 +222,7 @@ author_profile: true
     {%- if co == '' -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -248,6 +242,7 @@ author_profile: true
 <article class="archive__item" style="margin:0 0 1rem 0;">
   <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
   <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">with <em>{{ co }}</em></p>
+
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
