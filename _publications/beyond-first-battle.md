@@ -6,4 +6,5 @@ abstract: "Many wars are fought over distinct phases, where some underlying capa
 date: 2025-01-01
 collection: publications
 permalink: /research/beyond-first-battle/
+paperurl: "/files/Beyond_the_First_Battle.pdf"
 ---
