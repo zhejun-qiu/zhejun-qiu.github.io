@@ -7,4 +7,5 @@ abstract: "International donors frequently rely on foreign aid to support refuge
 date: 2025-01-02
 collection: publications
 permalink: /research/refugee-policies-foreign-aid-violence/
+paperurl: "/files/Dissertation_Essay_1_Zhejun_Qiu.pdf"
 ---
