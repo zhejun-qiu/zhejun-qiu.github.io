@@ -32,7 +32,15 @@ author_profile: true
 
 {%- for post in peer_reviewed -%}
 <article class="archive__item" style="margin:0 0 1rem 0;">
-  <h2 class="archive__item-title no_toc" style="margin:0;">{{ post.title }}</h2>
+  <h2 class="archive__item-title no_toc" style="margin:0;">
+  {% if post.paperurl %}
+    <a href="{{ post.paperurl | relative_url }}" target="_blank" rel="noopener">
+      {{ post.title }}
+    </a>
+  {% else %}
+    {{ post.title }}
+  {% endif %}
+</h2>
 
   {%- assign co = post.coauthors | to_s | strip -%}
   {%- unless co == '' -%}
