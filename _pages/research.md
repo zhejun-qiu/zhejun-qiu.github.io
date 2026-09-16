@@ -7,14 +7,17 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- hide the built-in page title and style the divider + abstract toggle -->
+<!-- Hide built-in page title and style dividers + abstract toggle -->
 <style>
-  .page__title{display:none}
-  .section-split{
-    border:0;
-    height:1px;
-    margin:2.25rem 0 2rem;
-    background:linear-gradient(
+  .page__title {
+    display: none;
+  }
+
+  .section-split {
+    border: 0;
+    height: 1px;
+    margin: 2.25rem 0 2rem;
+    background: linear-gradient(
       90deg,
       transparent 0,
       #e3e3e3 18%,
@@ -25,27 +28,27 @@ author_profile: true
   }
 
   details.abstract {
-    margin:.4rem 0 0;
+    margin: .4rem 0 0;
   }
 
-  details.abstract > summary{
-    cursor:pointer;
-    user-select:none;
-    font-weight:600;
-    outline:none;
+  details.abstract > summary {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    outline: none;
   }
 
   details.abstract > summary::marker {
-    content:"▸ ";
+    content: "▸ ";
   }
 
   details.abstract[open] > summary::marker {
-    content:"▾ ";
+    content: "▾ ";
   }
 
   .archive__item-excerpt {
-    margin:.4rem 0 0;
-    font-size:.9em;
+    margin: .4rem 0 0;
+    font-size: .9em;
   }
 </style>
 
@@ -75,11 +78,16 @@ author_profile: true
 -%}
 
 
+<!-- ========================================================= -->
+<!-- PEER-REVIEWED PUBLICATIONS -->
+<!-- ========================================================= -->
+
 <h1 style="margin:1rem 0 .5rem; font-size:1.8rem;">
   Peer-Reviewed Publications
 </h1>
 
 {%- for post in peer_reviewed -%}
+
 <article class="archive__item" style="margin:0 0 1rem 0;">
 
   <h2 class="archive__item-title no_toc" style="margin:0;">
@@ -102,8 +110,7 @@ author_profile: true
   {%- endunless -%}
 
   <p style="margin:.25rem 0 0;">
-    <strong>Accepted</strong> at
-    <em>International Studies Quarterly</em>
+    <strong>Accepted</strong> at <em>International Studies Quarterly</em>
   </p>
 
   {%- if post.abstract -%}
@@ -116,20 +123,23 @@ author_profile: true
   {%- endif -%}
 
 </article>
+
 {%- endfor -%}
 
 
 <hr class="section-split" />
 
 
+<!-- ========================================================= -->
+<!-- UNDER REVIEW -->
+<!-- ========================================================= -->
+
 <h1 style="margin:0 0 .5rem; font-size:1.8rem;">
   Under Review
 </h1>
 
 
-{%- comment -%}
-1. Political Psychology — Minor Revision
-{%- endcomment -%}
+<!-- 1. Political Psychology — Minor Revision -->
 
 {%- for post in minor_pp -%}
 
@@ -146,45 +156,9 @@ author_profile: true
     </p>
   {%- endunless -%}
 
-  {%- if post.title == "Refugee Policies, Foreign Aid, and Political Violence in the Global South" -%}
-    <p style="margin:.2rem 0 0; font-style:italic; font-size:.9em; color:#777;">
-      2026 Dina Zinnes Best Graduate Student Paper Award, SSIP, ISA
-    </p>
-  {%- endif -%}
-
-  {%- if post.status -%}
-
-    {%- assign status_txt = post.status
-      | replace: "Submitted", ""
-      | strip
-    -%}
-
-    {%- if status_txt contains "International Studies Quarterly" -%}
-      {%- assign status_txt = status_txt
-        | replace: "International Studies Quarterly",
-        "<em>International Studies Quarterly</em>"
-      -%}
-    {%- endif -%}
-
-    {%- if status_txt contains "Minor Revision at Political Psychology" -%}
-  {%- assign status_txt = status_txt
-    | replace: "Minor Revision at Political Psychology",
-    "<strong>Minor Revision</strong> at <em>Political Psychology</em>"
-  -%}
-{%- elsif status_txt contains "Political Psychology" -%}
-  {%- assign status_txt = status_txt
-    | replace: "Political Psychology",
-    "<em>Political Psychology</em>"
-  -%}
-{%- endif -%}
-
-    {%- if status_txt != "" -%}
-      <p style="margin:.25rem 0 0;">
-        {{ status_txt }}
-      </p>
-    {%- endif -%}
-
-  {%- endif -%}
+  <p style="margin:.25rem 0 0;">
+    <strong>Minor Revision</strong> at <em>Political Psychology</em>
+  </p>
 
   {%- if post.abstract -%}
     <details class="abstract">
@@ -200,9 +174,7 @@ author_profile: true
 {%- endfor -%}
 
 
-{%- comment -%}
-2. Submitted — single-authored first
-{%- endcomment -%}
+<!-- 2. Submitted — single-authored first -->
 
 {%- for post in submitted -%}
 
@@ -222,35 +194,6 @@ author_profile: true
     </p>
   {%- endif -%}
 
-  {%- if post.status -%}
-
-    {%- assign status_txt = post.status
-      | replace: "Submitted", ""
-      | strip
-    -%}
-
-    {%- if status_txt contains "International Studies Quarterly" -%}
-      {%- assign status_txt = status_txt
-        | replace: "International Studies Quarterly",
-        "<em>International Studies Quarterly</em>"
-      -%}
-    {%- endif -%}
-
-    {%- if status_txt contains "Political Psychology" -%}
-      {%- assign status_txt = status_txt
-        | replace: "Political Psychology",
-        "<em>Political Psychology</em>"
-      -%}
-    {%- endif -%}
-
-    {%- if status_txt != "" -%}
-      <p style="margin:.25rem 0 0;">
-        {{ status_txt }}
-      </p>
-    {%- endif -%}
-
-  {%- endif -%}
-
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -267,9 +210,7 @@ author_profile: true
 {%- endfor -%}
 
 
-{%- comment -%}
-3. Submitted — coauthored second
-{%- endcomment -%}
+<!-- 3. Submitted — coauthored second -->
 
 {%- for post in submitted -%}
 
@@ -293,35 +234,6 @@ author_profile: true
     </p>
   {%- endif -%}
 
-  {%- if post.status -%}
-
-    {%- assign status_txt = post.status
-      | replace: "Submitted", ""
-      | strip
-    -%}
-
-    {%- if status_txt contains "International Studies Quarterly" -%}
-      {%- assign status_txt = status_txt
-        | replace: "International Studies Quarterly",
-        "<em>International Studies Quarterly</em>"
-      -%}
-    {%- endif -%}
-
-    {%- if status_txt contains "Political Psychology" -%}
-      {%- assign status_txt = status_txt
-        | replace: "Political Psychology",
-        "<em>Political Psychology</em>"
-      -%}
-    {%- endif -%}
-
-    {%- if status_txt != "" -%}
-      <p style="margin:.25rem 0 0;">
-        {{ status_txt }}
-      </p>
-    {%- endif -%}
-
-  {%- endif -%}
-
   {%- if post.abstract -%}
     <details class="abstract">
       <summary>Abstract</summary>
@@ -341,9 +253,9 @@ author_profile: true
 <hr class="section-split" />
 
 
-{%- comment -%}
-Dissertation chapters subset of publications
-{%- endcomment -%}
+<!-- ========================================================= -->
+<!-- DISSERTATION CHAPTERS -->
+<!-- ========================================================= -->
 
 {%- assign diss_shared = site.publications
   | where: "title",
@@ -363,9 +275,7 @@ Dissertation chapters subset of publications
 </h1>
 
 
-{%- comment -%}
-Dissertation — single-authored first
-{%- endcomment -%}
+<!-- Dissertation — single-authored first -->
 
 {%- for post in dissertation -%}
 
@@ -395,9 +305,7 @@ Dissertation — single-authored first
 {%- endfor -%}
 
 
-{%- comment -%}
-Dissertation — then coauthored future-proof
-{%- endcomment -%}
+<!-- Dissertation — coauthored future-proof -->
 
 {%- for post in dissertation -%}
 
@@ -434,14 +342,16 @@ Dissertation — then coauthored future-proof
 <hr class="section-split" />
 
 
+<!-- ========================================================= -->
+<!-- WORKING PAPERS -->
+<!-- ========================================================= -->
+
 <h1 style="margin:0 0 .5rem; font-size:1.8rem;">
   Working Papers
 </h1>
 
 
-{%- comment -%}
-Working Papers — single-authored first, no per-item status line
-{%- endcomment -%}
+<!-- Working Papers — single-authored first -->
 
 {%- for post in working -%}
 
@@ -476,9 +386,7 @@ Working Papers — single-authored first, no per-item status line
 {%- endfor -%}
 
 
-{%- comment -%}
-Working Papers — then coauthored, no per-item status line
-{%- endcomment -%}
+<!-- Working Papers — coauthored second -->
 
 {%- for post in working -%}
 
