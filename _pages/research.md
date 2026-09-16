@@ -166,12 +166,17 @@ author_profile: true
       -%}
     {%- endif -%}
 
-    {%- if status_txt contains "Political Psychology" -%}
-      {%- assign status_txt = status_txt
-        | replace: "Political Psychology",
-        "<em>Political Psychology</em>"
-      -%}
-    {%- endif -%}
+    {%- if status_txt contains "Minor Revision at Political Psychology" -%}
+  {%- assign status_txt = status_txt
+    | replace: "Minor Revision at Political Psychology",
+    "<strong>Minor Revision</strong> at <em>Political Psychology</em>"
+  -%}
+{%- elsif status_txt contains "Political Psychology" -%}
+  {%- assign status_txt = status_txt
+    | replace: "Political Psychology",
+    "<em>Political Psychology</em>"
+  -%}
+{%- endif -%}
 
     {%- if status_txt != "" -%}
       <p style="margin:.25rem 0 0;">
