@@ -145,43 +145,7 @@ author_profile: true
 </h1>
 
 
-<!-- 1. American Journal of Political Science — Revise and Resubmit -->
-
-{%- for post in rr_ajps -%}
-
-<article class="archive__item" style="margin:0 0 1rem 0;">
-
-  <h2 class="archive__item-title no_toc" style="margin:0;">
-    {{ post.title }}
-  </h2>
-
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- unless co == '' -%}
-    <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">
-      with <em>{{ co }}</em>
-    </p>
-  {%- endunless -%}
-
-  <p style="margin:.25rem 0 0;">
-    <strong>Revise and Resubmit</strong> at
-    <em>American Journal of Political Science</em>
-  </p>
-
-  {%- if post.abstract -%}
-    <details class="abstract">
-      <summary>Abstract</summary>
-      <div class="archive__item-excerpt">
-        {{ post.abstract }}
-      </div>
-    </details>
-  {%- endif -%}
-
-</article>
-
-{%- endfor -%}
-
-
-<!-- 2. Political Psychology — Minor Revision -->
+<!-- 1. Political Psychology — Minor Revision -->
 
 {%- for post in minor_pp -%}
 
@@ -200,6 +164,41 @@ author_profile: true
 
   <p style="margin:.25rem 0 0;">
     <strong>Minor Revision</strong> at <em>Political Psychology</em>
+  </p>
+
+  {%- if post.abstract -%}
+    <details class="abstract">
+      <summary>Abstract</summary>
+      <div class="archive__item-excerpt">
+        {{ post.abstract }}
+      </div>
+    </details>
+  {%- endif -%}
+
+</article>
+
+{%- endfor -%}
+
+
+<!-- 2. Revise and Resubmit -->
+
+{%- for post in rr_ajps -%}
+
+<article class="archive__item" style="margin:0 0 1rem 0;">
+
+  <h2 class="archive__item-title no_toc" style="margin:0;">
+    {{ post.title }}
+  </h2>
+
+  {%- assign co = post.coauthors | to_s | strip -%}
+  {%- unless co == '' -%}
+    <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">
+      with <em>{{ co }}</em>
+    </p>
+  {%- endunless -%}
+
+  <p style="margin:.25rem 0 0;">
+    <strong>Revise and Resubmit</strong>
   </p>
 
   {%- if post.abstract -%}
