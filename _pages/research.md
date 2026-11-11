@@ -1,4 +1,3 @@
-
 ---
 layout: archive
 title: "Research"
@@ -152,7 +151,7 @@ author_profile: true
 </h1>
 
 
-<!-- 1. Revise and Resubmit -->
+<!-- 2. Revise and Resubmit -->
 
 {%- for post in rr_ajps -%}
 
@@ -187,7 +186,7 @@ author_profile: true
 {%- endfor -%}
 
 
-<!-- 2. Submitted — single-authored first -->
+<!-- 3. Submitted — single-authored first -->
 
 {%- for post in submitted -%}
 
@@ -223,7 +222,7 @@ author_profile: true
 {%- endfor -%}
 
 
-<!-- 3. Submitted — coauthored second -->
+<!-- 4. Submitted — coauthored second -->
 
 {%- for post in submitted -%}
 
