@@ -1,3 +1,4 @@
+
 ---
 layout: archive
 title: "Research"
@@ -53,20 +54,22 @@ author_profile: true
 </style>
 
 
-{%- assign peer_reviewed = site.publications
+{%- assign isq_publications = site.publications
   | where: "status", "Accepted at International Studies Quarterly"
+-%}
+
+{%- assign pp_publications = site.publications
+  | where: "status", "Accepted at Political Psychology"
+-%}
+
+{%- assign peer_reviewed = isq_publications
+  | concat: pp_publications
   | sort: "date"
   | reverse
 -%}
 
 {%- assign rr_ajps = site.publications
   | where: "status", "Revise and Resubmit at the American Journal of Political Science"
-  | sort: "date"
-  | reverse
--%}
-
-{%- assign minor_pp = site.publications
-  | where: "status", "Minor Revision at Political Psychology"
   | sort: "date"
   | reverse
 -%}
@@ -116,7 +119,11 @@ author_profile: true
   {%- endunless -%}
 
   <p style="margin:.25rem 0 0;">
-    <strong>Accepted</strong> at <em>International Studies Quarterly</em>
+    {%- if post.status == "Accepted at International Studies Quarterly" -%}
+      <strong>Forthcoming</strong> in <em>International Studies Quarterly</em>
+    {%- elsif post.status == "Accepted at Political Psychology" -%}
+      <strong>Forthcoming</strong> in <em>Political Psychology</em>
+    {%- endif -%}
   </p>
 
   {%- if post.abstract -%}
@@ -145,42 +152,7 @@ author_profile: true
 </h1>
 
 
-<!-- 1. Political Psychology — Minor Revision -->
-
-{%- for post in minor_pp -%}
-
-<article class="archive__item" style="margin:0 0 1rem 0;">
-
-  <h2 class="archive__item-title no_toc" style="margin:0;">
-    {{ post.title }}
-  </h2>
-
-  {%- assign co = post.coauthors | to_s | strip -%}
-  {%- unless co == '' -%}
-    <p style="margin:.2rem 0 0; font-style:italic; font-size:.95em;">
-      with <em>{{ co }}</em>
-    </p>
-  {%- endunless -%}
-
-  <p style="margin:.25rem 0 0;">
-    <strong>Minor Revision</strong> at <em>Political Psychology</em>
-  </p>
-
-  {%- if post.abstract -%}
-    <details class="abstract">
-      <summary>Abstract</summary>
-      <div class="archive__item-excerpt">
-        {{ post.abstract }}
-      </div>
-    </details>
-  {%- endif -%}
-
-</article>
-
-{%- endfor -%}
-
-
-<!-- 2. Revise and Resubmit -->
+<!-- 1. Revise and Resubmit -->
 
 {%- for post in rr_ajps -%}
 
@@ -215,7 +187,7 @@ author_profile: true
 {%- endfor -%}
 
 
-<!-- 3. Submitted — single-authored first -->
+<!-- 2. Submitted — single-authored first -->
 
 {%- for post in submitted -%}
 
@@ -251,7 +223,7 @@ author_profile: true
 {%- endfor -%}
 
 
-<!-- 4. Submitted — coauthored second -->
+<!-- 3. Submitted — coauthored second -->
 
 {%- for post in submitted -%}
 
