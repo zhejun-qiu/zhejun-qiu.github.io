@@ -63,8 +63,6 @@ author_profile: true
 
 {%- assign peer_reviewed = isq_publications
   | concat: pp_publications
-  | sort: "date"
-  | reverse
 -%}
 
 {%- assign rr_ajps = site.publications
